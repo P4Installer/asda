@@ -143,7 +143,7 @@ HTML_TEMPLATE = """
 
         <div class="section-title">Профили</div>
         <div class="card">
-            <a href="P4installer.mobileconfig" class="row">
+            <a href="https://github.com/P4Installer/asda/P4installer.mobileconfig" class="row">
                 <span class="row-label">Приложение P4tweaks</span>
                 <span class="row-value">Скачать</span>
             </a>
@@ -245,6 +245,7 @@ def download_ota():
 if __name__ == '__main__':
 
     app.run(host='0.0.0.0', port=5000)
+
 
 
 
