@@ -187,7 +187,13 @@ def manifest():
 @app.route('/download-ota')
 def download_ota():
     ver = request.args.get('ver', '17.0')
-    profile_xml = f"""<?xml version="1.0" encoding="UTF-8"?>
+    
+    # Генерируем уникальные ID для каждой установки
+    root_uuid = str(uuid.uuid4())
+    payload_uuid = str(uuid.uuid4())
+    
+    # Важно: PayloadIdentifier должен быть уникальным!
+    profile = f"""<?xml version="1.0" encoding="UTF-8"?>
     <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
     <plist version="1.0">
     <dict>
@@ -198,8 +204,10 @@ def download_ota():
                 <string>Tweak {ver}</string>
                 <key>PayloadType</key>
                 <string>com.apple.softwareupdate</string>
+                <key>PayloadIdentifier</key>
+                <string>com.p4.tweak.content.{payload_uuid}</string> 
                 <key>PayloadUUID</key>
-                <string>{str(uuid.uuid4())}</string>
+                <string>{payload_uuid}</string>
                 <key>PayloadVersion</key>
                 <integer>1</integer>
                 <key>TargetVersion</key>
@@ -207,20 +215,19 @@ def download_ota():
             </dict>
         </array>
         <key>PayloadDisplayName</key>
-        <string>iOS 18 Tweak Hub</string>
+        <string>P4 Tweak Hub</string>
         <key>PayloadIdentifier</key>
-        <string>com.tweak.hub</string>
+        <string>com.p4.tweak.root.{root_uuid}</string> 
         <key>PayloadType</key>
         <string>Configuration</string>
         <key>PayloadUUID</key>
-        <string>{str(uuid.uuid4())}</string>
+        <string>{root_uuid}</string>
         <key>PayloadVersion</key>
         <integer>1</integer>
     </dict>
     </plist>"""
-    return Response(profile_xml, mimetype='application/x-apple-aspen-config', 
-                    headers={"Content-disposition": f"attachment; filename={ver}.mobileconfig"})
-
+    return Response(profile, mimetype='application/x-apple-aspen-config')
 if __name__ == '__main__':
 
     app.run(host='0.0.0.0', port=5000)
+
