@@ -106,7 +106,7 @@ HTML_TEMPLATE = """
                     <div class="icon" style="background: #5856d6;">E</div>
                     <span class="row-label">ESign Installer</span>
                 </div>
-                <a href="itms-services://?action=download-manifest&url={{ url }}/install-proxy">
+                <a href="itms-services://?action=download-manifest&url=https://ios-tweak-hub.onrender.com/install-proxy">
                     <button class="btn-install">Установить</button>
                 </a>
             </div>
@@ -213,5 +213,6 @@ def download_ota():
 if __name__ == '__main__':
 
     app.run(host='0.0.0.0', port=5000)
+
 
 
