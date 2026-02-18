@@ -3,7 +3,7 @@ services:
   - type: web
     name: ios-tweak-hub
     runtime: python
-    repo: https://github.com/ВашАккаунт/asda  # Замени на свою ссылку
+    repo: https://github.com/P4Installer/asda  # Замени на свою ссылку
     plan: free
     region: frankfurt
     buildCommand: pip install -r requirements.txt
