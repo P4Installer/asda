@@ -129,14 +129,7 @@ HTML_TEMPLATE = """
                 </a>
             </div>
             <div class="row">
-                <div style="display: flex; align-items: center;">
-                    <div class="icon" style="background: #ffffff;">P</div>
-                    <span class="row-label">capcut pro</span>
-                </div>
-                <a href="https://github.com/P4Installer/asda/capcut.ipa">
-                    <button class="btn-install">IPA</button>
-                </a>
-            </div>
+                
             <div class="row">
                 <div style="display: flex; align-items: center;">
                     <div class="icon" style="background: #44bd48;">g</div>
@@ -254,6 +247,7 @@ def download_ota():
 if __name__ == '__main__':
 
     app.run(host='0.0.0.0', port=5000)
+
 
 
 
