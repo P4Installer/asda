@@ -1,4 +1,4 @@
-
+import requests
 import os
 import uuid
 from flask import Flask, Response, render_template_string, request
@@ -106,7 +106,7 @@ HTML_TEMPLATE = """
                     <div class="icon" style="background: #5856d6;">E</div>
                     <span class="row-label">ESign Installer</span>
                 </div>
-                <a href="itms-services://?action=download-manifest&amp;url=https://applejr.net/post/Esign_Forevermark.plist">
+                <a href="itms-services://?action=download-manifest&url={{ url }}/install-proxy">
                     <button class="btn-install">Установить</button>
                 </a>
             </div>
@@ -149,40 +149,23 @@ def index():
     current_url = request.url_root.replace('http://', 'https://')
     return render_template_string(HTML_TEMPLATE, base_url=current_url.strip('/'))
 
-@app.route('/manifest.plist')
-def manifest():
-    xml = f"""<?xml version="1.0" encoding="UTF-8"?>
-    <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-    <plist version="1.0">
-    <dict>
-        <key>items</key>
-        <array>
-            <dict>
-                <key>assets</key>
-                <array>
-                    <dict>
-                        <key>kind</key>
-                        <string>software-package</string>
-                        <key>url</key>
-                        <string>{BASE_URL}/static/esign.ipa</string>
-                    </dict>
-                </array>
-                <key>metadata</key>
-                <dict>
-                    <key>bundle-identifier</key>
-                    <string>com.esign.client</string>
-                    <key>bundle-version</key>
-                    <string>1.0</string>
-                    <key>kind</key>
-                    <string>software</string>
-                    <key>title</key>
-                    <string>ESign</string>
-                </dict>
-            </dict>
-        </array>
-    </dict>
-    </plist>"""
-    return Response(xml, mimetype='application/xml')
+@app.route('/install-proxy')
+def install_proxy():
+    # Ссылка на оригинальный манифест другого сайта
+    remote_manifest_url = "https://applejr.net/post/Esign_Forevermark.plist"
+    
+    try:
+        # 1. Скачиваем манифест с другого сайта
+        response = requests.get(remote_manifest_url)
+        content = response.text
+        
+        # 2. Если в чужом манифесте относительные пути, заменяем их на полные
+        # (необязательно, если там уже прямая ссылка на .ipa)
+        
+        # 3. Отдаем его как свой
+        return Response(content, mimetype='text/xml')
+    except Exception as e:
+        return f"Ошибка загрузки манифеста: {e}"
 
 @app.route('/download-ota')
 def download_ota():
@@ -230,4 +213,5 @@ def download_ota():
 if __name__ == '__main__':
 
     app.run(host='0.0.0.0', port=5000)
+
 
