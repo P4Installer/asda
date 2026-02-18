@@ -129,12 +129,10 @@ HTML_TEMPLATE = """
                 </a>
             </div>
             <div class="row">
-            <div class="row">
                 <div style="display: flex; align-items: center;">
                     <div class="icon" style="background: #44bd48;">g</div>
                     <span class="row-label">Gbox</span>
                 </div>
-                
                 <a href="https://gbox.run/?id=01a1529a3237905cab97cd1034b6be16">
                     <button class="btn-install">На сайт gbox</button>
                 </a>
@@ -247,6 +245,7 @@ def download_ota():
 if __name__ == '__main__':
 
     app.run(host='0.0.0.0', port=5000)
+
 
 
 
