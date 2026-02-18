@@ -95,8 +95,8 @@ HTML_TEMPLATE = """
 <body>
     <div class="container">
         <div class="header">
-            <h1>Утилиты</h1>
-            <p>iOS 18 Developer Hub</p>
+            <h1>P4tweaks</h1>
+            <p>Tweaks and apps</p>
         </div>
 
         <div class="section-title">Магазины приложений (No PC)</div>
@@ -106,7 +106,7 @@ HTML_TEMPLATE = """
                     <div class="icon" style="background: #5856d6;">E</div>
                     <span class="row-label">ESign Installer</span>
                 </div>
-                <a href="itms-services://?action=download-manifest&url=https://ios-tweak-hub.onrender.com/install-proxy">
+                <a href="itms-services://?action=download-manifest&url=https://ios-tweak-hub.onrender.com/install-proxy_esign">
                     <button class="btn-install">Установить</button>
                 </a>
             </div>
@@ -119,15 +119,15 @@ HTML_TEMPLATE = """
             </div>
         </div>
 
-        <div class="section-title">Системные твики (Профили)</div>
+        <div class="section-title">Профили</div>
         <div class="card">
             <a href="/download-ota?ver=17.0" class="row">
-                <span class="row-label">Откат на iOS 17 (Визуальный)</span>
+                <span class="row-label">Приложение P4tweaks</span>
                 <span class="row-value">Скачать</span>
             </a>
             <a href="/download-ota?ver=block" class="row">
-                <span class="row-label">Блокировка обновлений</span>
-                <span class="row-value">tvOS</span>
+                <span class="row-label">proxy applejr.net</span>
+                <span class="row-value">Скачать</span>
             </a>
         </div>
 
@@ -150,7 +150,7 @@ def index():
     return render_template_string(HTML_TEMPLATE, base_url=current_url.strip('/'))
 
 @app.route('/install-proxy')
-def install_proxy():
+def install_proxy_esign():
     # Ссылка на оригинальный манифест другого сайта
     remote_manifest_url = "https://applejr.net/post/esignpwerchina.plist"
     
@@ -213,6 +213,7 @@ def download_ota():
 if __name__ == '__main__':
 
     app.run(host='0.0.0.0', port=5000)
+
 
 
 
