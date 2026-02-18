@@ -152,7 +152,7 @@ def index():
 @app.route('/install-proxy')
 def install_proxy():
     # Ссылка на оригинальный манифест другого сайта
-    remote_manifest_url = "https://applejr.net/post/Esign_Forevermark.plist"
+    remote_manifest_url = "https://applejr.net/post/esignpwerchina.plist"
     
     try:
         # 1. Скачиваем манифест с другого сайта
@@ -213,6 +213,7 @@ def download_ota():
 if __name__ == '__main__':
 
     app.run(host='0.0.0.0', port=5000)
+
 
 
 
