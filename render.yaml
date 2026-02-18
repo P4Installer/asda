@@ -1,0 +1,23 @@
+services:
+  # Наш основной веб-сайт на Python (Flask)
+  - type: web
+    name: ios-tweak-hub
+    runtime: python
+    repo: https://github.com/ВашАккаунт/asda  # Замени на свою ссылку
+    plan: free
+    region: frankfurt
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: BASE_URL
+        value: https://ios-tweak-hub.onrender.com # Твой будущий адрес
+      - key: PYTHON_VERSION
+        value: 3.10.0
+
+  # Статическое хранилище для IPA файлов (через встроенный диск, чтобы не удалялись)
+  # Примечание: На бесплатном плане Render диски платные, 
+  # поэтому файлы IPA лучше просто держать в папке static вашего репозитория.
+
+databases:
+  - name: tweak-db
+    plan: free
