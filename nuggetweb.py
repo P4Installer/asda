@@ -1,10 +1,12 @@
+
+import os
 import uuid
 from flask import Flask, Response, render_template_string, request
 
 app = Flask(__name__)
 
-# Настройки твоего сервера (замени на свой домен/IP с https)
-BASE_URL = "https://your-domain.com" 
+# Render выдает адрес автоматически, но нам нужен HTTPS для iOS
+BASE_URL = os.environ.get('BASE_URL', 'http://localhost:5000')
 
 HTML_TEMPLATE = """
 <!DOCTYPE html>
@@ -143,7 +145,9 @@ HTML_TEMPLATE = """
 
 @app.route('/')
 def index():
-    return render_template_string(HTML_TEMPLATE, base_url=BASE_URL)
+    # Мы используем HTTPS версию URL для манифеста, это критично!
+    current_url = request.url_root.replace('http://', 'https://')
+    return render_template_string(HTML_TEMPLATE, base_url=current_url.strip('/'))
 
 @app.route('/manifest.plist')
 def manifest():
