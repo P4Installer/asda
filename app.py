@@ -99,7 +99,7 @@ HTML_TEMPLATE = """
             <p>Tweaks and apps</p>
         </div>
 
-        <div class="section-title">Магазины приложений (No PC)</div>
+        <div class="section-title">Приложения и ipa</div>
         <div class="card">
             <div class="row">
                 <div style="display: flex; align-items: center;">
@@ -112,32 +112,57 @@ HTML_TEMPLATE = """
             </div>
             <div class="row">
                 <div style="display: flex; align-items: center;">
-                    <div class="icon" style="background: #ff9500;">S</div>
-                    <span class="row-label">Scarlet</span>
+                    <div class="icon" style="background: #ff9500;">K</div>
+                    <span class="row-label">Ksign</span>
                 </div>
-                <button class="btn-install">Загрузить</button>
+                <a href="itms-services://?action=download-manifest&url=https://ios-tweak-hub.onrender.com/install-proxy_ksign">
+                    <button class="btn-install">Установить</button>
+                </a>
+            </div>
+            <div class="row">
+                <div style="display: flex; align-items: center;">
+                    <div class="icon" style="background: #340059;">P</div>
+                    <span class="row-label">PureKFD(ios 15.0-17.0)</span>
+                </div>
+                <a href="https://github.com/P4Installer/asda/purekfd.ipa">
+                    <button class="btn-install">IPA</button>
+                </a>
+            </div>
+            <div class="row">
+                <div style="display: flex; align-items: center;">
+                    <div class="icon" style="background: #ffffff;">P</div>
+                    <span class="row-label">capcut pro</span>
+                </div>
+                <a href="https://github.com/P4Installer/asda/capcut.ipa">
+                    <button class="btn-install">IPA</button>
+                </a>
+            </div>
+            <div class="row">
+                <div style="display: flex; align-items: center;">
+                    <div class="icon" style="background: #44bd48;">g</div>
+                    <span class="row-label">Gbox</span>
+                </div>
+                <a href="https://gbox.run/?id=01a1529a3237905cab97cd1034b6be16">
+                    <button class="btn-install">На сайт gbox</button>
+                </a>
             </div>
         </div>
 
+
+
         <div class="section-title">Профили</div>
         <div class="card">
-            <a href="/download-ota?ver=17.0" class="row">
+            <a href="P4installer.mobileconfig" class="row">
                 <span class="row-label">Приложение P4tweaks</span>
                 <span class="row-value">Скачать</span>
             </a>
-            <a href="/download-ota?ver=block" class="row">
+            <a href="proxyapplejr.mobileconfig" class="row">
                 <span class="row-label">proxy applejr.net</span>
                 <span class="row-value">Скачать</span>
             </a>
         </div>
 
-        <div class="section-title">Устройство</div>
-        <div class="card">
-            <div class="row">
-                <span class="row-label">Статус USB</span>
-                <span class="row-value" style="color: var(--ios-green);">Подключено</span>
-            </div>
-        </div>
+        
     </div>
 </body>
 </html>
@@ -153,6 +178,22 @@ def index():
 def install_proxy_esign():
     # Ссылка на оригинальный манифест другого сайта
     remote_manifest_url = "https://applejr.net/post/esignpwerchina.plist"
+    
+    try:
+        # 1. Скачиваем манифест с другого сайта
+        response = requests.get(remote_manifest_url)
+        content = response.text
+        
+        # 2. Если в чужом манифесте относительные пути, заменяем их на полные
+        # (необязательно, если там уже прямая ссылка на .ipa)
+        
+        # 3. Отдаем его как свой
+        return Response(content, mimetype='text/xml')
+    except Exception as e:
+        return f"Ошибка загрузки манифеста: {e}"
+def install_proxy_ksign():
+    # Ссылка на оригинальный манифест другого сайта
+    remote_manifest_url = "itms-services://?action=download-manifest&amp;url=https://applejr.net/post/ksignpower.plist"
     
     try:
         # 1. Скачиваем манифест с другого сайта
@@ -213,6 +254,7 @@ def download_ota():
 if __name__ == '__main__':
 
     app.run(host='0.0.0.0', port=5000)
+
 
 
 
