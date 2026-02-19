@@ -171,6 +171,16 @@ HTML_TEMPLATE = """
                     <button class="btn-install">Get</button>
                 </a>
             </div>
+
+            <div class="row">
+                <div style="display: flex; align-items: center;">
+                    <div class="icon" style="background: linear-gradient(135deg, #2c8a32, #096e0f);">M</div>
+                    <span class="row-label">Minecraft(IPA)</span>
+                </div>
+                <a href="https://file.ipaomtk.com/Minecraft/Minecraft-v1.21.131-IPAOMTK.COM.ipa">
+                    <button class="btn-install">Get</button>
+                </a>
+            </div>
         </div>
 
         <div class="section-title">Профили</div>
@@ -185,6 +195,14 @@ HTML_TEMPLATE = """
             </a>
             <a href="https://app.theappbox.ru/appbox_app.mobileconfig" class="row">
                 <span class="row-label">AppBox</span>
+                <span class="row-value">Скачать</span>
+            </a>
+        </div>
+
+        <div class="section-title">Сертификаты</div>
+        <div class="card">
+            <a href="https://raw.githubusercontent.com/P4Installer/asda/main/PowerChinaInternationalGroupLimited.zip" class="row">
+                <span class="row-label">PowerChina</span>
                 <span class="row-value">Скачать</span>
             </a>
         </div>
@@ -221,5 +239,6 @@ def install_proxy_ksign():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
+
 
 
