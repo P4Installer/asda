@@ -142,7 +142,7 @@ HTML_TEMPLATE = """
                     <div class="icon" style="background: #602391;">S</div>
                     <span class="row-label">SideStore(IPA)</span>
                 </div>
-                <a href="https://github.com/P4Installer/asda/raw/refs/heads/main/SideStore.ipa">
+                <a href="https://github.com/SideStore/SideStore/releases/download/nightly/SideStore.ipa">
                     <button class="btn-install">Установить</button>
                 </a>
             </div>
@@ -222,6 +222,7 @@ def install_proxy_ksign():
 if __name__ == '__main__':
 
     app.run(host='0.0.0.0', port=5000)
+
 
 
 
