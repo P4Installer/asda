@@ -124,7 +124,7 @@ HTML_TEMPLATE = """
                     <div class="icon" style="background: #340059;">P</div>
                     <span class="row-label">PureKFD(ios 15.0-17.0)</span>
                 </div>
-                <a href="https://raw.githubusercontent.com/P4Installer/asda/main/purekfd.ipa">
+                <a href="https://ios-tweak-hub.onrender.com/install-proxy_PureKFD">
                     <button class="btn-install">IPA</button>
                 </a>
             </div>
@@ -143,11 +143,11 @@ HTML_TEMPLATE = """
 
         <div class="section-title">Профили</div>
         <div class="card">
-            <a href="https://raw.githubusercontent.com/P4Installer/asda/main/P4Installer.mobileconfig" class="row">
+            <a href="https://ios-tweak-hub.onrender.com/install-proxy_p4installer" class="row">
                 <span class="row-label">Приложение P4tweaks</span>
                 <span class="row-value">Скачать</span>
             </a>
-            <a href="https://raw.githubusercontent.com/P4Installer/asda/main/proxyapplejr.mobileconfig" class="row">
+            <a href="https://ios-tweak-hub.onrender.com/install-proxy_applejr" class="row">
                 <span class="row-label">proxy applejr.net</span>
                 <span class="row-value">Скачать</span>
             </a>
@@ -201,52 +201,66 @@ def install_proxy_ksign():
     except Exception as e:
         return f"Ошибка загрузки манифеста: {e}"
 
-@app.route('/download-ota')
-def download_ota():
-    ver = request.args.get('ver', '17.0')
+@app.route('/install-proxy_applejr')
+def install_proxy_applejr():
+    # Ссылка на оригинальный манифест другого сайта
+    remote_manifest_url = "https://raw.githubusercontent.com/P4Installer/asda/main/proxyapplejr.mobileconfig"
     
-    # Генерируем уникальные ID для каждой установки
-    root_uuid = str(uuid.uuid4())
-    payload_uuid = str(uuid.uuid4())
+    try:
+        # 1. Скачиваем манифест с другого сайта
+        response = requests.get(remote_manifest_url)
+        content = response.text
+        
+        # 2. Если в чужом манифесте относительные пути, заменяем их на полные
+        # (необязательно, если там уже прямая ссылка на .ipa)
+        
+        # 3. Отдаем его как свой
+        return Response(content, mimetype='text/xml')
+    except Exception as e:
+        return f"Ошибка загрузки proxyapplejr: {e}"
+
+@app.route('/install-proxy_p4installer')
+def install_proxy_applejr():
+    # Ссылка на оригинальный манифест другого сайта
+    remote_manifest_url = "https://raw.githubusercontent.com/P4Installer/asda/main/P4installer.mobileconfig"
     
-    # Важно: PayloadIdentifier должен быть уникальным!
-    profile = f"""<?xml version="1.0" encoding="UTF-8"?>
-    <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-    <plist version="1.0">
-    <dict>
-        <key>PayloadContent</key>
-        <array>
-            <dict>
-                <key>PayloadDisplayName</key>
-                <string>Tweak {ver}</string>
-                <key>PayloadType</key>
-                <string>com.apple.softwareupdate</string>
-                <key>PayloadIdentifier</key>
-                <string>com.p4.tweak.content.{payload_uuid}</string> 
-                <key>PayloadUUID</key>
-                <string>{payload_uuid}</string>
-                <key>PayloadVersion</key>
-                <integer>1</integer>
-                <key>TargetVersion</key>
-                <string>{ver}</string>
-            </dict>
-        </array>
-        <key>PayloadDisplayName</key>
-        <string>P4 Tweak Hub</string>
-        <key>PayloadIdentifier</key>
-        <string>com.p4.tweak.root.{root_uuid}</string> 
-        <key>PayloadType</key>
-        <string>Configuration</string>
-        <key>PayloadUUID</key>
-        <string>{root_uuid}</string>
-        <key>PayloadVersion</key>
-        <integer>1</integer>
-    </dict>
-    </plist>"""
-    return Response(profile, mimetype='application/x-apple-aspen-config')
+    try:
+        # 1. Скачиваем манифест с другого сайта
+        response = requests.get(remote_manifest_url)
+        content = response.text
+        
+        # 2. Если в чужом манифесте относительные пути, заменяем их на полные
+        # (необязательно, если там уже прямая ссылка на .ipa)
+        
+        # 3. Отдаем его как свой
+        return Response(content, mimetype='text/xml')
+    except Exception as e:
+        return f"Ошибка загрузки P4installer: {e}"
+
+@app.route('/install-proxy_purekfd')
+def install_proxy_applejr():
+    # Ссылка на оригинальный манифест другого сайта
+    remote_manifest_url = "https://raw.githubusercontent.com/P4Installer/asda/main/PureKFD.ipa"
+    
+    try:
+        # 1. Скачиваем манифест с другого сайта
+        response = requests.get(remote_manifest_url)
+        content = response.text
+        
+        # 2. Если в чужом манифесте относительные пути, заменяем их на полные
+        # (необязательно, если там уже прямая ссылка на .ipa)
+        
+        # 3. Отдаем его как свой
+        return Response(content, mimetype='text/xml')
+    except Exception as e:
+        return f"Ошибка загрузки PureKFD: {e}"
+
+
+
 if __name__ == '__main__':
 
     app.run(host='0.0.0.0', port=5000)
+
 
 
 
