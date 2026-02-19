@@ -122,19 +122,19 @@ HTML_TEMPLATE = """
             <div class="row">
                 <div style="display: flex; align-items: center;">
                     <div class="icon" style="background: #340059;">P</div>
-                    <span class="row-label">PureKFD(ios 15.0-17.0)</span>
+                    <span class="row-label">PureKFD(IPA)</span>
                 </div>
                 <a href="https://github.com/P4Installer/asda/raw/refs/heads/main/PureKFD.ipa">
-                    <button class="btn-install">IPA</button>
+                    <button class="btn-install">Установить</button>
                 </a>
             </div>
             <div class="row">
                 <div style="display: flex; align-items: center;">
-                    <div class="icon" style="background: #44bd48;">g</div>
+                    <div class="icon" style="background: #44bd48;">G</div>
                     <span class="row-label">Gbox</span>
                 </div>
                 <a href="https://gbox.run/?id=01a1529a3237905cab97cd1034b6be16">
-                    <button class="btn-install">На сайт gbox</button>
+                    <button class="btn-install">Установить</button>
                 </a>
             </div>
         </div>
@@ -149,6 +149,10 @@ HTML_TEMPLATE = """
             </a>
             <a href="https://raw.githubusercontent.com/P4Installer/asda/main/proxyapplejr.mobileconfig" class="row">
                 <span class="row-label">proxy applejr.net</span>
+                <span class="row-value">Скачать</span>
+            </a>
+            <a href="https://app.theappbox.ru/appbox_app.mobileconfig" class="row">
+                <span class="row-label">AppBox</span>
                 <span class="row-value">Скачать</span>
             </a>
         </div>
@@ -209,6 +213,7 @@ def install_proxy_ksign():
 if __name__ == '__main__':
 
     app.run(host='0.0.0.0', port=5000)
+
 
 
 
