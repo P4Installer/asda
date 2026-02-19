@@ -5,7 +5,6 @@
 <dict>
   <key>PayloadContent</key>
   <array>
-<dict>
 
     <!-- Первый ярлык -->
     <dict>
@@ -14,13 +13,13 @@
       <key>IsRemovable</key>
       <false/>
       <key>Label</key>
-      <string>P4tweaks</string>
+      <string>P4Installer</string>
       <key>PayloadDescription</key>
-      <string>P4tweaks</string>
+      <string>P4Installer</string>
       <key>PayloadDisplayName</key>
-      <string>P4tweaks</string>
+      <string>P4Installer</string>
       <key>PayloadIdentifier</key>
-      <string>com.Jail.P4tweaks</string>
+      <string>com.Jail.P4Installer</string>
       <key>PayloadType</key>
       <string>com.apple.webClip.managed</string>
       <key>PayloadUUID</key>
@@ -45,12 +44,12 @@ iVBORw0KGgoAAAANSUhEUgAAAggAAAIFCAIAAAA4AJLqAAAQAElEQVR4nOz9eYxty1Ufjq/dt2/P3fd2
     <key>PayloadVersion</key>
     <integer>1</integer>
     <key>PayloadIdentifier</key>
-    <string>com.apple.config.P4tweaks</string>
+    <string>com.apple.config.P4Installer</string>
     <key>PayloadUUID</key>
     <string>AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE</string>
     <key>PayloadDisplayName</key>
-    <string>P4tweaks</string>
+    <string>P4Installer</string>
     <key>PayloadDescription</key>
-    <string>install apps and tweaks</string>
+    <string>install apps</string>
 </dict>
 </plist>
