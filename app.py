@@ -14,7 +14,7 @@ HTML_TEMPLATE = """
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>iOS 18 Control Hub</title>
+    <title>P4tweaks</title>
     <style>
         :root {
             --ios-bg: #000000;
@@ -124,7 +124,7 @@ HTML_TEMPLATE = """
                     <div class="icon" style="background: #340059;">P</div>
                     <span class="row-label">PureKFD(ios 15.0-17.0)</span>
                 </div>
-                <a href="https://github.com/P4Installer/asda/purekfd.ipa">
+                <a href="https://raw.githubusercontent.com/P4Installer/asda/main/purekfd.ipa">
                     <button class="btn-install">IPA</button>
                 </a>
             </div>
@@ -143,11 +143,11 @@ HTML_TEMPLATE = """
 
         <div class="section-title">Профили</div>
         <div class="card">
-            <a href="https://github.com/P4Installer/asda/P4installer.mobileconfig" class="row">
+            <a href="https://raw.githubusercontent.com/P4Installer/asda/main/P4Installer.mobileconfig" class="row">
                 <span class="row-label">Приложение P4tweaks</span>
                 <span class="row-value">Скачать</span>
             </a>
-            <a href="proxyapplejr.mobileconfig" class="row">
+            <a href="https://raw.githubusercontent.com/P4Installer/asda/main/proxyapplejr.mobileconfig" class="row">
                 <span class="row-label">proxy applejr.net</span>
                 <span class="row-value">Скачать</span>
             </a>
@@ -165,7 +165,7 @@ def index():
     current_url = request.url_root.replace('http://', 'https://')
     return render_template_string(HTML_TEMPLATE, base_url=current_url.strip('/'))
 
-@app.route('/install-proxy')
+@app.route('/install-proxy_esign')
 def install_proxy_esign():
     # Ссылка на оригинальный манифест другого сайта
     remote_manifest_url = "https://applejr.net/post/esignpwerchina.plist"
@@ -182,9 +182,11 @@ def install_proxy_esign():
         return Response(content, mimetype='text/xml')
     except Exception as e:
         return f"Ошибка загрузки манифеста: {e}"
+
+@app.route('/install-proxy_ksign')
 def install_proxy_ksign():
     # Ссылка на оригинальный манифест другого сайта
-    remote_manifest_url = "itms-services://?action=download-manifest&amp;url=https://applejr.net/post/ksignpower.plist"
+    remote_manifest_url = "https://applejr.net/post/ksignpower.plist"
     
     try:
         # 1. Скачиваем манифест с другого сайта
@@ -245,6 +247,7 @@ def download_ota():
 if __name__ == '__main__':
 
     app.run(host='0.0.0.0', port=5000)
+
 
 
 
