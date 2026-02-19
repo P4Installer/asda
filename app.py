@@ -143,7 +143,7 @@ HTML_TEMPLATE = """
 
         <div class="section-title">Профили</div>
         <div class="card">
-            <a href="https://raw.githubusercontent.com/P4Installer/asda/main/P4Installer.mobileconfig" class="row">
+            <a href="https://P4Installer.github.io/P4Installer.mobileconfig" class="row">
                 <span class="row-label">Приложение P4tweaks</span>
                 <span class="row-value">Скачать</span>
             </a>
@@ -209,6 +209,7 @@ def install_proxy_ksign():
 if __name__ == '__main__':
 
     app.run(host='0.0.0.0', port=5000)
+
 
 
 
