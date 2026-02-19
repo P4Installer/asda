@@ -13,226 +13,166 @@ HTML_TEMPLATE = """
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>P4tweaks</title>
     <style>
         :root {
-            --ios-bg: #000000;
-            --ios-card: #1c1c1e;
-            --ios-blue: #0a84ff;
-            --ios-secondary: #8e8e93;
-            --ios-divider: rgba(255, 255, 255, 0.12);
+            --primary-color: #0071e3;
+            --bg-color: #000000;
+            --card-bg: rgba(28, 28, 30, 0.8);
+            --text-main: #ffffff;
+            --text-secondary: #a1a1a6;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--ios-bg);
-            color: white;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 0% 0%, #1d1d1f 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, #002d5a 0%, transparent 50%);
             margin: 0;
-            padding: env(safe-area-inset-top) 16px 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .container { 
-            width: 100%; 
-            max-width: 420px; 
-            animation: fadeIn 0.5s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .header { 
-            margin: 40px 0 24px 8px; 
-        }
-
-        .header h1 { 
-            font-size: 34px; 
-            font-weight: 800; 
-            margin: 0; 
-            letter-spacing: -0.5px;
-        }
-
-        .header p { 
-            color: var(--ios-secondary); 
-            font-size: 17px; 
-            margin: 4px 0 0;
-        }
-
-        .section-title { 
-            font-size: 13px; 
-            text-transform: uppercase; 
-            color: var(--ios-secondary); 
-            margin: 24px 0 8px 16px; 
-            letter-spacing: 0.2px;
-        }
-
-        .card {
-            background-color: var(--ios-card);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-        }
-
-        .row {
-            padding: 11px 16px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            min-height: 44px;
-            text-decoration: none;
-            color: white;
-            border-bottom: 0.5px solid var(--ios-divider);
-            transition: background 0.2s ease;
-        }
-
-        .row:last-child { border-bottom: none; }
-        
-        /* Эффект нажатия как в iOS */
-        .row:active { background-color: #3a3a3c; }
-
-        .row-left {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .row-label { 
-            font-size: 17px; 
-            font-weight: 400;
-        }
-
-        .row-value { 
-            color: var(--ios-blue); 
-            font-size: 17px;
-            padding-right: 4px;
-        }
-
-        .btn-install {
-            background-color: #2c2c2e;
-            color: var(--ios-blue);
-            padding: 6px 14px;
-            border-radius: 18px;
-            font-weight: 700;
-            font-size: 13px;
-            border: none;
-            cursor: pointer;
-            text-transform: uppercase;
-            transition: all 0.2s ease;
-        }
-
-        .btn-install:active {
-            transform: scale(0.92);
-            background-color: #3a3a3c;
-        }
-
-        .icon {
-            width: 30px;
-            height: 30px;
-            border-radius: 7px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 16px;
-            font-weight: 600;
-            color: white;
-            flex-shrink: 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            min-height: 100vh;
+            color: var(--text-main);
+            overflow: hidden;
         }
 
-        /* Шеврон (стрелочка) для ссылок */
-        .chevron::after {
-            content: '›';
-            color: #555558;
-            font-size: 20px;
-            margin-left: 8px;
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
+
+        .container {
+            text-align: center;
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 40px 30px;
+            border-radius: 32px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            max-width: 380px;
+            width: 85%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .app-icon {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, #3a3a3c 0%, #000000 100%);
+            border-radius: 20px;
+            margin: 0 auto 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 36px;
+            font-weight: 800;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-icon::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            animation: shine 4s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            20%, 100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        h1 { 
+            font-size: 28px; 
+            margin: 0 0 10px; 
+            font-weight: 700; 
+            letter-spacing: -0.5px;
+        }
+
+        p { 
+            color: var(--text-secondary); 
+            margin-bottom: 32px; 
+            line-height: 1.4; 
+            font-size: 16px; 
+            padding: 0 10px;
+        }
+
+        .btn-install {
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            padding: 16px 0;
+            width: 100%;
+            border-radius: 16px;
+            font-weight: 600;
+            display: block;
+            transition: all 0.2s ease;
+            font-size: 17px;
+            box-shadow: 0 4px 15px rgba(0, 113, 227, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-install:active {
+            transform: scale(0.97);
+            filter: brightness(1.1);
+        }
+
+        .instructions {
+            margin-top: 32px;
+            font-size: 14px;
+            text-align: left;
+            color: var(--text-secondary);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 18px;
+        }
+
+        .instructions strong {
+            display: block;
+            margin-bottom: 12px;
+            color: #fff;
+            font-size: 15px;
+        }
+
+        .instructions ol { 
+            padding-left: 18px; 
+            margin: 0;
+        }
+
+        .instructions li { 
+            margin-bottom: 10px; 
+        }
+
+        b { color: var(--primary-color); }
+        
+        a { text-decoration: none; }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>P4tweaks</h1>
-            <p>Tweaks and apps</p>
-        </div>
+        <div class="app-icon">P4</div>
+        <h1>P4tweaks</h1>
+        <p>Установите профиль конфигурации для доступа к приложениям.</p>
+        
+        <a href="https://P4Installer.github.io/P4Installer.mobileconfig" class="btn-install">Установить профиль</a>
 
-        <div class="section-title">Приложения и ipa</div>
-        <div class="card">
-            <div class="row">
-                <div class="row-left">
-                    <div class="icon" style="background: linear-gradient(135deg, #5856d6, #3533a3);">E</div>
-                    <span class="row-label">ESign Installer</span>
-                </div>
-                <a href="itms-services://?action=download-manifest&url=https://ios-tweak-hub.onrender.com/install-proxy_esign">
-                    <button class="btn-install">Get</button>
-                </a>
-            </div>
-            <div class="row">
-                <div class="row-left">
-                    <div class="icon" style="background: linear-gradient(135deg, #ff9500, #ff5e00);">K</div>
-                    <span class="row-label">Ksign</span>
-                </div>
-                <a href="itms-services://?action=download-manifest&url=https://ios-tweak-hub.onrender.com/install-proxy_ksign">
-                    <button class="btn-install">Get</button>
-                </a>
-            </div>
-            <div class="row">
-                <div class="row-left">
-                    <div class="icon" style="background: linear-gradient(135deg, #340059, #200036);">P</div>
-                    <span class="row-label">PureKFD (IPA)</span>
-                </div>
-                <a href="https://github.com/P4Installer/asda/raw/refs/heads/main/PureKFD.ipa">
-                    <button class="btn-install">Get</button>
-                </a>
-            </div>
-            <div class="row">
-                <div class="row-left">
-                    <div class="icon" style="background: linear-gradient(135deg, #44bd48, #2d8a30);">G</div>
-                    <span class="row-label">Gbox</span>
-                </div>
-                <a href="https://gbox.run/?id=01a1529a3237905cab97cd1034b6be16">
-                    <button class="btn-install">Get</button>
-                </a>
-            </div>
-            <div class="row">
-                <div class="row-left">
-                    <div class="icon" style="background: linear-gradient(135deg, #602391, #401861);">S</div>
-                    <span class="row-label">SideStore (IPA)</span>
-                </div>
-                <a href="https://github.com/SideStore/SideStore/releases/download/nightly/SideStore.ipa">
-                    <button class="btn-install">Get</button>
-                </a>
-            </div>
-        </div>
-
-        <div class="section-title">Профили конфигурации</div>
-        <div class="card">
-            <a href="https://P4Installer.github.io/P4Installer.mobileconfig" class="row">
-                <span class="row-label">Приложение P4tweaks</span>
-                <div style="display: flex; align-items: center;">
-                    <span class="row-value">Скачать</span>
-                    <span class="chevron"></span>
-                </div>
-            </a>
-            <a href="https://raw.githubusercontent.com/P4Installer/asda/main/proxyapplejr.mobileconfig" class="row">
-                <span class="row-label">Proxy applejr.net</span>
-                <div style="display: flex; align-items: center;">
-                    <span class="row-value">Скачать</span>
-                    <span class="chevron"></span>
-                </div>
-            </a>
-            <a href="https://app.theappbox.ru/appbox_app.mobileconfig" class="row">
-                <span class="row-label">AppBox Profile</span>
-                <div style="display: flex; align-items: center;">
-                    <span class="row-value">Скачать</span>
-                    <span class="chevron"></span>
-                </div>
-            </a>
+        <div class="instructions">
+            <strong>Инструкция:</strong>
+            <ol>
+                <li>Нажмите синюю кнопку</li>
+                <li>Выберите <b>Разрешить</b> в Safari</li>
+                <li>Откройте <b>Настройки</b> профиля</li>
+                <li>Нажмите <b>Установить</b></li>
+            </ol>
         </div>
     </div>
 </body>
@@ -267,3 +207,4 @@ def install_proxy_ksign():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
+
