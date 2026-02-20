@@ -199,9 +199,9 @@ HTML_TEMPLATE = """
             <div class="row">
                 <div class="row-left">
                     <div class="icon" style="background: linear-gradient(135deg, #340059, #200036);">P</div>
-                    <span class="row-label">PureKFD</span>
+                    <span class="row-label">PureKFD(ipa)</span>
                 </div>
-                <a href="itms-services://?action=download-manifest&url=https://ios-tweak-hub.onrender.com/install-proxy_purekfd">
+                <a href="https://github.com/P4Installer/asda/raw/refs/heads/main/PureKFD.ipa">
                     <button class="btn-install">Get</button>
                 </a>
             </div>
@@ -302,6 +302,7 @@ def install_proxy_ksign():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
+
 
 
 
