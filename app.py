@@ -201,7 +201,7 @@ HTML_TEMPLATE = """
                     <div class="icon" style="background: linear-gradient(135deg, #340059, #200036);">P</div>
                     <span class="row-label">PureKFD</span>
                 </div>
-                <a href="itms-services://?action=download-manifest&url=https://github.com/P4Installer/asda/raw/refs/heads/main/PureKFD.ipa">
+                <a href="itms-services://?action=download-manifest&url=https://ios-tweak-hub.onrender.com/install-proxy_purekfd">
                     <button class="btn-install">Get</button>
                 </a>
             </div>
@@ -280,6 +280,16 @@ def install_proxy_esign():
     except Exception as e:
         return f"Ошибка загрузки манифеста: {e}"
 
+@app.route('/install-proxy_purekfd')
+def install_proxy_esign():
+    remote_manifest_url = "https://raw.githubusercontent.com/P4Installer/asda/main/test.plist"
+    try:
+        response = requests.get(remote_manifest_url)
+        content = response.text
+        return Response(content, mimetype='text/xml')
+    except Exception as e:
+        return f"Ошибка загрузки манифеста: {e}"
+
 @app.route('/install-proxy_ksign')
 def install_proxy_ksign():
     remote_manifest_url = "https://applejr.net/post/ksignpower.plist"
@@ -292,6 +302,7 @@ def install_proxy_ksign():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
+
 
 
 
