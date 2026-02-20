@@ -281,7 +281,7 @@ def install_proxy_esign():
         return f"Ошибка загрузки манифеста: {e}"
 
 @app.route('/install-proxy_purekfd')
-def install_proxy_esign():
+def install_proxy_purekfd():
     remote_manifest_url = "https://raw.githubusercontent.com/P4Installer/asda/main/test.plist"
     try:
         response = requests.get(remote_manifest_url)
@@ -302,6 +302,7 @@ def install_proxy_ksign():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
+
 
 
 
