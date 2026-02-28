@@ -4,7 +4,7 @@
     {
       "name": "ESign Installer",
       "description": "Proxy supported installer",
-      "color": "#5856d6",
+      "color": "#302eb3",
       "url": "itms-services://?action=download-manifest&url=https://p4skuda.pythonanywhere.com/install-proxy_esign"
     },
     {
@@ -16,3 +16,4 @@
   ]
 
 }
+
