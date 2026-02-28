@@ -2,7 +2,7 @@
   "repo_name": "P4Tweaks DEFAULT REPO",
   "packages": [
     {
-      "name": "ESign Installecr",
+      "name": "ESign Installer",
       "description": "Ipa installer",
       "color": "#302eb3",
       "url": "itms-services://?action=download-manifest&url=https://applejr.net/post/esignpwerchina.plist"
@@ -16,6 +16,7 @@
   ]
 
 }
+
 
 
 
