@@ -1,11 +1,11 @@
 {
-  "repo_name": "P4Tweaks Main",
+  "repo_name": "P4Tweaks DEFAULT REPO",
   "packages": [
     {
       "name": "ESign Installer",
-      "description": "Proxy supported installer",
+      "description": "Ipa installer",
       "color": "#302eb3",
-      "url": "itms-services://?action=download-manifest&url=https://p4skuda.pythonanywhere.com/install-proxy_esign"
+      "url": "itms-services://?action=download-manifest&url=https://applejr.net/post/esignpwerchina.plist"
     },
     {
       "name": "Minecraft",
@@ -16,4 +16,5 @@
   ]
 
 }
+
 
