@@ -12,10 +12,17 @@
       "description": "v1.21.131 Full Version",
       "color": "#2c8a32",
       "url": "https://file.ipaomtk.com/Minecraft/Minecraft-v1.21.131-IPAOMTK.COM.ipa"
+    },
+    {
+      "name": "GBosx",
+      "description": "GBox ipa",
+      "color": "#28fc28",
+      "url": "https://cdn.gbox.run/d/apps/GBox_v6.0.ipa"
     }
   ]
 
 }
+
 
 
 
