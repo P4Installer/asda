@@ -1,12 +1,11 @@
 {
   "repo_name": "P4Tweaks Main",
-  "repo_icon": "https://example.com/icon.png",
   "packages": [
     {
       "name": "ESign Installer",
       "description": "Proxy supported installer",
-      "color": "linear-gradient(135deg, #5856d6, #3533a3)",
-      "url": "itms-services://?action=download-manifest&url=https://applejr.net/post/esignpwerchina.plist"
+      "color": "#5856d6",
+      "url": "itms-services://?action=download-manifest&url=https://p4skuda.pythonanywhere.com/install-proxy_esign"
     },
     {
       "name": "Minecraft",
@@ -15,4 +14,5 @@
       "url": "https://file.ipaomtk.com/Minecraft/Minecraft-v1.21.131-IPAOMTK.COM.ipa"
     }
   ]
+
 }
